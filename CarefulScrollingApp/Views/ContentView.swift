@@ -9,12 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView {
-            ScrollScreenView()
-                .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("First")
-                }
+        ZStack {
+            TabView {
+                ScrollScreenView()
+                    .tabItem {
+                        Image(systemName: "star.fill")
+                        Text("First")
+                    }
+            }
+            GeometryReader { geometry in
+                Rectangle()
+                    .fill(.red.opacity(0.7))
+//                    .edgesIgnoringSafeArea(.bottom)
+                    .frame(width: geometry.size.width, height: 50)
+                    .position(
+                        x: geometry.size.width / 2,
+                        y: geometry.size.height - 75
+                    )
+            }
         }
     }
 }
