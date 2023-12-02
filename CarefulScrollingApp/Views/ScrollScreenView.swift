@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct ScrollScreenView: View {
+    
     var body: some View {
-        List {
-            LazyVStack(spacing: 0) {
+        ScrollView {
+            VStack {
                 ForEach(1...100, id: \.self) { number in
                     Text("\(number)")
-                        .font(.title)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                        .font(.title2)
                         .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity)
                 }
             }
-            .padding(.top, 10)
-            .listRowSeparator(.hidden)
-            .listRowBackground(Color.clear)
         }
-        .listStyle(.grouped)
-        .ignoresSafeArea()
+        .safeAreaInset(edge: .bottom) {
+            Rectangle()
+                .fill(.red.opacity(0.5))
+                .frame(height: 50)
+        }
     }
 }
 
